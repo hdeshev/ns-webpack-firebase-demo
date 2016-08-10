@@ -9,6 +9,10 @@
       "version": "2.1.1"
     }
   },
+  "scripts": {
+    "fix-gradle": "sed -i -e '/classpath.*google-services/d' -e '/classpath.*gradle/a classpath \"com.google.gms:google-services:3.0.0\"' -e '$a apply plugin: \"com.google.gms.google-services\"' -e '/apply plugin.*google-services/d' platforms/android/build.gradle",
+    "clean": "rm -rf node_modules platforms && npm install && npm run fix-gradle"
+  },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
@@ -18,9 +22,9 @@
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
     "@angular/platform-server": "2.0.0-rc.4",
     "@angular/router": "3.0.0-alpha.7",
-    "@angular/router-deprecated": "2.0.0-rc.2",
-    "reflect-metadata": "0.1.3",
     "nativescript-angular": "next",
+    "nativescript-plugin-firebase": "^3.4.4",
+    "reflect-metadata": "0.1.3",
     "tns-core-modules": "next"
   },
   "devDependencies": {
@@ -31,6 +35,7 @@
     "copy-webpack-plugin": "^3.0.1",
     "lazy": "1.0.11",
     "nativescript-dev-webpack": "dev",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "webpack-fail-plugin": "^1.0.5"
   }
 }
